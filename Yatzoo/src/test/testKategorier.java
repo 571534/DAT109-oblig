@@ -48,11 +48,13 @@ public class testKategorier {
 		assertEquals(resultatblokk.antallDyr(kopp, Terning.GRIS), 3);
 	}
 	
+	/*
 	@Test 
 	public void testAntallDyr () {
 		Terning[] eksempelKopp = {Terning.LØVE, Terning.GRIS, Terning.GRIS, Terning.HVAL, Terning.GRIS};
 		kopp = new Kopp(eksempelKopp); 
 		assertEquals(resultatblokk.antallDyr(kopp, Terning.GRIS), 3);
 	}
+	*/
 }
 
