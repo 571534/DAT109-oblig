@@ -1,6 +1,7 @@
 package yatzoo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -53,7 +54,7 @@ public class Resultatblokk {
 			}
 		}
 
-		List<Integer> list = List.of(love, slange, panda, gris, elefant, hval);
+		List<Integer> list = Arrays.asList(love, slange, panda, gris, elefant, hval);
 		return list;
 	}
 
