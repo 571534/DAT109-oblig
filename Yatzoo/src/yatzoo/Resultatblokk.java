@@ -60,18 +60,17 @@ public class Resultatblokk {
 
 	public int antallLike(Kopp kopp, int antall) { // kategori 7 og 8
 		int poengsum = 0;
-		
+
 		List<Integer> list = listAntall(kopp);
 		if (antall == 4) {
 			if (list.contains(antall) || list.contains(5)) {
 				poengsum = antall;
-			} 
+			}
 		} else {
-			if (list.contains(antall) || list.contains(antall+1) || list.contains(antall+2)) {
+			if (list.contains(antall) || list.contains(antall + 1) || list.contains(antall + 2)) {
 				poengsum = antall;
 			}
 		}
-		
 
 		return poengsum;
 	}
@@ -90,100 +89,97 @@ public class Resultatblokk {
 				teller++;
 			}
 		}
-		
+
 		if (teller >= 2) {
 			poengsum = 4;
 		}
-		
+
 		return poengsum;
 	}
-	
-	public int hus (Kopp kopp) {
+
+	public int hus(Kopp kopp) {
 		int poengsum = 0;
 		int treLike = 0;
 		List<Integer> list = listAntall(kopp);
-		
-	//	Iterator<Integer> iterator = list.iterator();
-		
+
+		// Iterator<Integer> iterator = list.iterator();
+
 		int toPar = toPar(kopp);
-		
+
 		if (toPar == 4) {
-			if (antallLike(kopp, 3) == 3){
+			if (antallLike(kopp, 3) == 3) {
 				poengsum = 5;
 			}
 		} else {
 			poengsum = 0;
 		}
 		/*
-		while (iterator.hasNext()) {
-			if (iterator.next() >= 2) {
-				teller++;
-			}
-		}
-		*/
-		
-		/*
-		while (iterator.hasNext()) { // 2, 3, 1,1, 0
-			if (iterator.next() == 3 || iterator.next() == 4) {
-				Integer dyr = iterator.next();
-			}
-		}
-		*/
-		
-		
-		
-		
-		
+		 * while (iterator.hasNext()) { if (iterator.next() >= 2) { teller++; } }
+		 */
 
 		/*
-		if (list.contains(3) || list.contains(4)) {
-			
-		}
-		*/
-		
+		 * while (iterator.hasNext()) { // 2, 3, 1,1, 0 if (iterator.next() == 3 ||
+		 * iterator.next() == 4) { Integer dyr = iterator.next(); } }
+		 */
+
+		/*
+		 * if (list.contains(3) || list.contains(4)) {
+		 * 
+		 * }
+		 */
+
 		return poengsum;
 	}
-	
+
 	public int alleUlike (Kopp kopp) {
-		int poengsum = 0; 
+		int antallUlike = 1; 
+		int poengsum = 0;
 		List<Integer> list = listAntall(kopp);
 		Iterator<Integer> iterator = list.iterator();
 		
 		while (iterator.hasNext()) {
 			Integer i = iterator.next();
 			if (i == 1) {
-				poengsum++;
-			} else {
-				poengsum = 0;
+				antallUlike++;
 			}
 		}
+			
+		if (antallUlike >= 5) {
+			poengsum = 5;
+		} 
+		
 		return poengsum; 
 
 	}
-	
+
 	public int alleLike(Kopp kopp) {
 		int poeng = 0;
-		
+
 		List<Integer> list = listAntall(kopp);
 		if (list.contains(5)) {
 			poeng = 10;
 		}
-		
+
 		return poeng;
 	}
-	
-	public void beregnTotal () {
+
+	public void beregnTotal() {
 		int poengsum = 0;
+		
 		for (int i : resultater) {
-			poengsum = poengsum+i;
+			poengsum = poengsum + i;
 		}
+		
 		resultater[12] = poengsum;
+	}
+	
+	public int getTotal () {
+		return resultater[12];
 	}
 
 	public int[] getResultater() {
 		return resultater;
 	}
-
 	public void setResultat(int poengsum, int runde) {
 		resultater[runde] = poengsum;
 	}

@@ -1,6 +1,7 @@
 package yatzoo;
 import yatzoo.Terning;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Kopp {
 	Terning[] terninger;
@@ -30,11 +31,12 @@ public class Kopp {
 	}
 	
 	public void lagreTerning (int i) {
-		lagredeTerninger[i-1] = 1;  
+		lagredeTerninger[i-1] = 1;
 	}
 	
 	public void fjernLagret (int i) {
 		lagredeTerninger[i-1] = 0;
+		
 	}
 	
 	public void tomKopp() {
@@ -45,7 +47,7 @@ public class Kopp {
 		return terninger;
 	}
 
-	public int[] getLagredeTerniger () {
+	public int[] getLagredeTerninger () {
 		return lagredeTerninger; 
 	}
 	

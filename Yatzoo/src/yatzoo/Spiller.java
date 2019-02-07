@@ -9,17 +9,6 @@ public class Spiller {
 		this.navn = navn; 
 		this.resultatblokk = new Resultatblokk(); 
 	}
-	/*
-	public void registrerPoeng(int i) {
-		resultatblokk.settResultat(i); 
-	}
-	*/
-	
-	/*
-	public void setResultater(Resultatblokk resultater) {
-		this.resultater = resultater;
-	}
-	*/
 
 	public Resultatblokk getResultatblokk () {
 		return resultatblokk; 
