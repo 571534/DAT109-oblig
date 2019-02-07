@@ -26,8 +26,8 @@ public class main {
 	*/
 		}
 	
-	//String nystr = str.replaceAll("\\s","");
-	//char[] array = toCharArray()
+	//String nystr = str.replaceAll("\\s","");     2 4 5 -> 245 
+	//char[] array = nystr.toCharArray()           
 	
 	/* 
 	 * For å lagre terninger som bruker skriver inn 
@@ -38,6 +38,7 @@ public class main {
 	 * 
 	 * for (int i = 0; i < integerStrings-1; i++) {
 	 * 	integerTab[i] = Integer.parseInt(integerStrings[i]);
+	 * 	
 	 * }
 	 * */
 	 

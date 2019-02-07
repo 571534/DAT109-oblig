@@ -13,6 +13,12 @@ public class Kopp {
 		int antallLagret = 0; 
 	}
 	
+	public Kopp (Terning[] terninger) {
+		this.terninger = terninger;
+		lagredeTerninger = new int[5]; 
+		int antallLagret = 0; 
+	}
+	
 	public void trill() {
 		Random r = new Random();
 		for (int i = 0; i<5; i++) {
@@ -27,6 +33,13 @@ public class Kopp {
 		lagredeTerninger[i-1] = 1;  
 	}
 	
+	public void fjernLagret (int i) {
+		lagredeTerninger[i-1] = 0;
+	}
+	
+	public void tomKopp() {
+		lagredeTerninger = new int[5]; 
+	}
 	
 	public Terning[] getKopp() {
 		return terninger;
