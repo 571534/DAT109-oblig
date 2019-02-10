@@ -7,6 +7,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Brukergrensesnitt/klient for å spille Yatzoo.
+ * 
+ * @author Arja Sivapiragasam
+ * @author Raida Talukdar
+ *
+ */
 public class klient {
 	public static void main(String[] args) {
 
@@ -20,6 +27,9 @@ public class klient {
 		int antallSpiller = 0;
 
 		System.out.println("Hei! ");
+		/*
+		 * Lar brukeren bestemme antall spillere som skal spille
+		 */
 		while (antallSpiller == 0) {
 			try {
 				System.out.println("Angi antall spillere: ");
@@ -29,18 +39,22 @@ public class klient {
 				System.out.println("Feil ved innlesning. Skriv inn et heltall.");
 			}
 		}
-
+		/**
+		 * Lar spillerene oppgi navnet sitt.
+		 */
 		if (antallSpiller != 0) {
 			for (int i = 1; i <= antallSpiller; i++) {
 				System.out.println("Angi navn på spiller nr " + i);
 				String navn = sc.nextLine();
 				spillere[i - 1] = new Spiller(navn);
 			}
-
+			/**
+			 * Her spilles hver runde, looper gjennom 12 ganger * per spiller.
+			 */
 			while (runde < 2) { // (runde < 12) gir 12 runder
 				System.out.println("Runde " + (runde + 1) + "\n");
 
-				for (int i = 0; i < antallSpiller; i++) {
+				for (int i = 0; i < antallSpiller; i++) { // for-løkke som kjører gjennom løkken 1 gang per spiller.
 					boolean aktiv = true;
 					System.out.println("Hei " + spillere[i].getNavn() + "\n");
 					System.out.println("Din resultatblokk");
@@ -51,8 +65,10 @@ public class klient {
 					int input = 0;
 					int teller = 0;
 					String inputString = "0";
-					kopp.tomKopp();
-
+					kopp.tomKopp(); // tømmer koppen
+					/**
+					 * En meny hvor brukeren kan bestemme hva de ønsker å gjøre.
+					 */
 					while (aktiv) {
 						System.out.println("Velg 1 for å trille");
 						System.out.println("Velg 2 for å lagre en terning");
@@ -129,7 +145,7 @@ public class klient {
 						default:
 							System.out.println("Skriv inn på nytt");
 						}
-					} // while
+					} // meny
 					if (runde == 0) {
 						poeng = rb.antallDyr(kopp, Terning.LØVE);
 						spillere[i].getResultatblokk().setResultat(poeng, runde);
@@ -186,12 +202,15 @@ public class klient {
 			for (Spiller spiller : spillere) {
 				totalSummer = Arrays.asList(spiller.getResultatblokk().getTotal());
 			}
-				maxPoeng = Collections.max(totalSummer);
-
+			maxPoeng = Collections.max(totalSummer);
+			/**
+			 * Skriver ut den ferdig utfyllte resultatblokken til hver spiller og navnet på
+			 * vinneren.
+			 */
 			for (Spiller spiller : spillere) {
 				if (spiller.getResultatblokk().getTotal() == maxPoeng && maxPoeng > 0) {
 					System.out.println("Vinneren er " + spiller.getNavn());
-				} 
+				}
 			}
 		}
 	}

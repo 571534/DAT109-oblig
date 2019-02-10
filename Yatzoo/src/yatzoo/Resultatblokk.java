@@ -8,16 +8,33 @@ import java.util.List;
 
 import yatzoo.Terning;
 
+/**
+ * En resultatblokk med 13 ulike runder hvor poengsummen beregnes forskjellig.
+ * 
+ * @author Arja Sivapiragasam
+ * @author Raida Talukdar
+ *
+ */
 public class Resultatblokk {
 
 	private int[] resultater;
 
+	/**
+	 * Oppretter en resultatblokk med 13 plasser.
+	 */
 	public Resultatblokk() {
 		resultater = new int[13];
 	}
-//metoder for å spille, bergene og legge inn poengsum i hver kategori //spillKategori1 osv 
 
-	public int antallDyr(Kopp kopp, Terning dyr) { // feks antall løver, kategori 1-6
+	/**
+	 * Teller opp ett poeng for hver instans av et spesifisert dyr. Gjelder for de
+	 * første 6 rundene. F.eks.: Runde 1: Teller opp antall løver.
+	 * 
+	 * @param kopp kopp som brukes i spillet
+	 * @param dyr  dyret som skal samles på i den spesifikke runden
+	 * @return poengsummen som et heltall
+	 */
+	public int antallDyr(Kopp kopp, Terning dyr) {
 		int poengsum = 0;
 		Terning[] terninger = kopp.getKopp();
 
@@ -29,6 +46,12 @@ public class Resultatblokk {
 		return poengsum;
 	}
 
+	/**
+	 * Lager en liste av hvor mange instanser av hvert dyr som er tilstede i koppen.
+	 * 
+	 * @param kopp en kopp med 5 terninger
+	 * @return en List<Integer> av antall ulike dyr
+	 */
 	public List<Integer> listAntall(Kopp kopp) {
 		Terning[] terninger = kopp.getKopp();
 		int love = 0;
@@ -58,7 +81,15 @@ public class Resultatblokk {
 		return list;
 	}
 
-	public int antallLike(Kopp kopp, int antall) { // kategori 7 og 8
+	/**
+	 * For å finne et spesifikt antall av like terninger. 3 legges inn for Runde 7
+	 * og 4 for Runde 8.
+	 * 
+	 * @param kopp   en kopp med 5 terninger
+	 * @param antall antallet like vi vil trille
+	 * @return poengsummen som et heltall
+	 */
+	public int antallLike(Kopp kopp, int antall) {
 		int poengsum = 0;
 
 		List<Integer> list = listAntall(kopp);
@@ -75,6 +106,12 @@ public class Resultatblokk {
 		return poengsum;
 	}
 
+	/**
+	 * Finner 2 unike par.
+	 * 
+	 * @param kopp en kopp med 5 terninger
+	 * @return poengsummen som et heltall
+	 */
 	public int toPar(Kopp kopp) {
 		int poengsum = 0;
 		int teller = 0;
@@ -97,12 +134,16 @@ public class Resultatblokk {
 		return poengsum;
 	}
 
+	/**
+	 * Sjekker at det er ett par og 3 like av to ulike dyr. Runde 9.
+	 * 
+	 * @param kopp kopp med 5 terninger
+	 * @return poengsummen som et heltall
+	 */
 	public int hus(Kopp kopp) {
 		int poengsum = 0;
 		int treLike = 0;
 		List<Integer> list = listAntall(kopp);
-
-		// Iterator<Integer> iterator = list.iterator();
 
 		int toPar = toPar(kopp);
 
@@ -113,45 +154,43 @@ public class Resultatblokk {
 		} else {
 			poengsum = 0;
 		}
-		/*
-		 * while (iterator.hasNext()) { if (iterator.next() >= 2) { teller++; } }
-		 */
-
-		/*
-		 * while (iterator.hasNext()) { // 2, 3, 1,1, 0 if (iterator.next() == 3 ||
-		 * iterator.next() == 4) { Integer dyr = iterator.next(); } }
-		 */
-
-		/*
-		 * if (list.contains(3) || list.contains(4)) {
-		 * 
-		 * }
-		 */
-
 		return poengsum;
 	}
 
-	public int alleUlike (Kopp kopp) {
-		int antallUlike = 1; 
+	/**
+	 * sjekker at det ikke finnes 2 instanser av samme terning, alle må være ulike.
+	 * Runde 10.
+	 * 
+	 * @param kopp kopp med 5 terninger
+	 * @return poengsummen som et heltall
+	 */
+	public int alleUlike(Kopp kopp) {
+		int antallUlike = 1;
 		int poengsum = 0;
 		List<Integer> list = listAntall(kopp);
 		Iterator<Integer> iterator = list.iterator();
-		
+
 		while (iterator.hasNext()) {
 			Integer i = iterator.next();
 			if (i == 1) {
 				antallUlike++;
 			}
 		}
-			
+
 		if (antallUlike >= 5) {
 			poengsum = 5;
-		} 
-		
-		return poengsum; 
+		}
+
+		return poengsum;
 
 	}
 
+	/**
+	 * Sjekker om alle terningene er like (samme dyr). Runde 11.
+	 * 
+	 * @param kopp kopp med 5 terninger
+	 * @return poengsummen som et heltall
+	 */
 	public int alleLike(Kopp kopp) {
 		int poeng = 0;
 
@@ -163,27 +202,51 @@ public class Resultatblokk {
 		return poeng;
 	}
 
+	/**
+	 * Beregner totalsummen av poengsummene og legger den inn i den siste plassen i
+	 * resultatblokken.
+	 */
 	public void beregnTotal() {
 		int poengsum = 0;
-		
+
 		for (int i : resultater) {
 			poengsum = poengsum + i;
 		}
-		
+
 		resultater[12] = poengsum;
 	}
-	
-	public int getTotal () {
+
+	/**
+	 * Henter totalsummen.
+	 * 
+	 * @return
+	 */
+	public int getTotal() {
 		return resultater[12];
 	}
 
+	/**
+	 * Henter alle resultatverdiene.
+	 * 
+	 * @return
+	 */
 	public int[] getResultater() {
 		return resultater;
 	}
+
+	/**
+	 * Setter en poengsum inn på en spesifik runde.
+	 * 
+	 * @param poengsum poengsum representert med et heltall
+	 * @param runde    hvilken runde som spilles
+	 */
 	public void setResultat(int poengsum, int runde) {
 		resultater[runde] = poengsum;
 	}
 
+	/**
+	 * Skriver ut resultatblokken
+	 */
 	public void printResultatblokk() {
 		System.out.println("Antall løver: " + resultater[0]);
 		System.out.println("Antall slanger: " + resultater[1]);

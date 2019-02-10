@@ -46,21 +46,21 @@ public class testKategorier {
 		kopp = new Kopp(eksempelKopp);
 		assertEquals(resultatblokk.antallLike(kopp, 4), 4);
 	}
-	
+
 	@Test
 	public void testToPar() {
 		Terning[] eksempelKopp = { Terning.GRIS, Terning.LØVE, Terning.LØVE, Terning.HVAL, Terning.GRIS };
 		kopp = new Kopp(eksempelKopp);
 		assertEquals(resultatblokk.toPar(kopp), 4);
 	}
-	
+
 	@Test
 	public void testHus() {
-		Terning[] eksempelKopp = {Terning.HVAL, Terning.LØVE, Terning.LØVE, Terning.LØVE, Terning.HVAL };
+		Terning[] eksempelKopp = { Terning.HVAL, Terning.LØVE, Terning.LØVE, Terning.LØVE, Terning.HVAL };
 		kopp = new Kopp(eksempelKopp);
 		assertEquals(resultatblokk.hus(kopp), 5);
 	}
-	
+
 	@Test
 	public void testAlleUlike() {
 		Terning[] eksempelKopp = { Terning.GRIS, Terning.LØVE, Terning.PANDA, Terning.SLANGE, Terning.HVAL };
@@ -79,31 +79,25 @@ public class testKategorier {
 		kopp = new Kopp(eksempelKopp2);
 		assertEquals(resultatblokk.alleLike(kopp), 0);
 	}
-	
+
 	@Test
-	public void testTomKopp () {
+	public void testTomKopp() {
 		kopp.trill();
 		int terningNr = 2;
-		
+
 		kopp.lagreTerning(terningNr);
-		assertEquals(kopp.getLagredeTerninger()[terningNr-1], 1);
-		
+		assertEquals(kopp.getLagredeTerninger()[terningNr - 1], 1);
+
 		kopp.tomKopp();
-		assertEquals(kopp.getLagredeTerninger()[terningNr-1], 0);
-		
+		assertEquals(kopp.getLagredeTerninger()[terningNr - 1], 0);
+
 		kopp.lagreTerning(3);
 		kopp.lagreTerning(1);
 		kopp.tomKopp();
-		
+
 		for (int i : kopp.getLagredeTerninger()) {
 			assertEquals(i, 0);
-			
+
 		}
 	}
-	/*
-	 * @Test public void testAntallDyr () { Terning[] eksempelKopp = {Terning.LØVE,
-	 * Terning.GRIS, Terning.GRIS, Terning.HVAL, Terning.GRIS}; kopp = new
-	 * Kopp(eksempelKopp); assertEquals(resultatblokk.antallDyr(kopp, Terning.GRIS),
-	 * 3); }
-	 */
 }
